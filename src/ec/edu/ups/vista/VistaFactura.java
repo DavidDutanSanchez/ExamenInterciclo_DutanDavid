@@ -31,10 +31,11 @@ public class VistaFactura {
     List<Integer> datosProductos = new ArrayList<>();
     private double subtotal = 0;
 
-    public VistaFactura(ControladorFactura controladorFactura, ControladorDatosProducto controladorDatosProducto, ControladorDetalleFactura controladorDetalleFactura) {
+    public VistaFactura(ControladorFactura controladorFactura, ControladorDatosProducto controladorDatosProducto, ControladorDetalleFactura controladorDetalleFactura, ControladorDatosCliente controladorDatosCliente) {
         this.controladorFactura = controladorFactura;
         this.controladorDatosProducto = controladorDatosProducto;
         this.controladorDetalleFactura = controladorDetalleFactura;
+        this.controladorDatosCliente= this.controladorDatosCliente;
         formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
     }
   

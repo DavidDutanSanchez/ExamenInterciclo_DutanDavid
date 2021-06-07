@@ -31,7 +31,7 @@ public class Principal {
         
         VistaDatosCliente vistaDatosCliente= new VistaDatosCliente(controladorDatosCliente);
         VistaDatosProducto vistaDatosProducto= new VistaDatosProducto(controladorDatosProducto);
-        VistaFactura vistaFactura=new VistaFactura(controladorFactura, controladorDatosProducto, controladorDetalleFactura);
+        VistaFactura vistaFactura=new VistaFactura(controladorFactura, controladorDatosProducto, controladorDetalleFactura,controladorDatosCliente);
         
         Scanner input = new Scanner(System.in);
         boolean salir = false;
@@ -160,16 +160,16 @@ public class Principal {
                                     opcion1 = input.nextInt();
                                     switch (opcion1) {
                                         case 1:
-                                            
+                                            vistaFactura.crear();
                                             break;
 
                                         case 2:
-                                           
-                                            System.out.println("Producto eliminado");
+                                            vistaFactura.buscar();
+                                            System.out.println("Factura encontrada");
                                             break;
                                         case 3:
-                                           
-                                            System.out.println("Carrito creado");
+                                          vistaFactura.eliminar();
+                                            System.out.println("Factura Eliminada ");
                                             break;
                                         case 4:
                                              vistaFactura.listarFacturas();
