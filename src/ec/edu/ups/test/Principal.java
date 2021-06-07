@@ -65,7 +65,7 @@ public class Principal {
                                         + "6.salir\n " );
                                       
                                 try {
-                                    System.out.println("Elija una opcion");
+                                    System.out.println("Elija una opcion: ");
                                     opcion1 = input.nextInt();
                                     switch (opcion1) {
                                         case 1:
