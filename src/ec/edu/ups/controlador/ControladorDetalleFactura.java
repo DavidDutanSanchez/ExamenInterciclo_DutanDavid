@@ -21,8 +21,8 @@ public class ControladorDetalleFactura {
      private DetalleFactura detalleFactura;
      private Factura factura;
 
-    public ControladorDetalleFactura(ArrayList<Integer> diccionario, DetalleFactura detalleFactura, Factura factura) {
-        this.diccionario = diccionario;
+    public ControladorDetalleFactura(DetalleFactura detalleFactura, Factura factura) {
+        this.diccionario = new ArrayList<>();
         this.detalleFactura = detalleFactura;
         this.factura = factura;
     }

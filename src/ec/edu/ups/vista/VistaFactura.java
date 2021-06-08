@@ -35,11 +35,10 @@ public class VistaFactura {
         this.controladorFactura = controladorFactura;
         this.controladorDatosProducto = controladorDatosProducto;
         this.controladorDetalleFactura = controladorDetalleFactura;
-        this.controladorDatosCliente= this.controladorDatosCliente;
+        this.controladorDatosCliente= controladorDatosCliente;
         formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
     }
   
-
     Scanner input = new Scanner(System.in);
     boolean salir = false;
     int opcion4;
@@ -65,17 +64,15 @@ public class VistaFactura {
                         if (controladorDatosProducto.buscar(codigoProducto) != null) {
                             datosProductos.add(codigoProducto);
                             subtotal += controladorDatosProducto.buscar(codigoProducto).getPrecioUnitario();
+                            System.out.println("Producto agregado ala factura");
                         } else {
                             System.out.println("codigo de producto no existe");
                         }
-
-                        System.out.println("Producto agregado ala factura");
                         break;
-
                     case 2:
                         System.out.println("Dijite el numero del Cliente");
                         int id=input.nextInt();
-                        if(controladorDatosCliente.buscar(id)!=null){
+                        if(controladorDatosCliente.buscar(String.valueOf(id))!=null){
                         controladorFactura.create(numero, Calendar.getInstance().getTime(),subtotal ,0 ,id);
                         controladorDetalleFactura.aniadirLista(datosProductos);
                         
@@ -101,7 +98,7 @@ public class VistaFactura {
          System.out.println("Ingrese el numero de Factura a buscar");
        int codigo=input.nextInt();
         if (controladorFactura.buscar(codigo)!=null){
-           controladorDatosProducto.buscar(codigo).toString();
+            System.out.println(controladorDatosProducto.buscar(codigo).toString());
         }else{
             System.out.println("la factura no existe");
         } 
@@ -121,5 +118,11 @@ public class VistaFactura {
 
     public void listarFacturas() {
         controladorFactura.findAll().stream().forEach(object -> System.out.println(object));
+        System.out.println(controladorDetalleFactura.MostrarLista());
     }
+    
+            
+        
+       
+    
 }

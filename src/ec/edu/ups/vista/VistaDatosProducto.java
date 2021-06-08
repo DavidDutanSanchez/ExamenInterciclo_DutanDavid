@@ -44,7 +44,7 @@ public class VistaDatosProducto {
        System.out.println("Ingrese el codigo del producto a buscar");
        int codigo=scanner.nextInt();
         if (controladorDatosProducto.buscar(codigo)!=null){
-           controladorDatosProducto.buscar(codigo).toString();
+            System.out.println(controladorDatosProducto.buscar(codigo).toString());
         }else{
             System.out.println("El producto no existe");
         } 
@@ -55,13 +55,16 @@ public class VistaDatosProducto {
        System.out.println("Ingrese el Codigo de producto a modificar: "); 
        int codigo=scanner.nextInt();
         if(controladorDatosProducto.buscar(codigo)!=null){
-            System.out.println("Ingrese los nuevos datos del producto");
+            System.out.println("-----Ingrese los nuevos datos del producto----");
+            System.out.println("Ingrese la nueva descripcion del producto");
             String descripcion=scanner.next();
+            System.out.println("Ingrese el nuevo precio");
             double preciounitario= scanner.nextDouble();
+            System.out.println("Ingrese el nuevo stokc");
             int stock=scanner.nextInt();
+            System.out.println("Ingrese el nuevo iva del producto");
             double iva=scanner.nextDouble();
            
-            
             controladorDatosProducto.modificar(codigo, descripcion, preciounitario, stock, iva);
             System.out.println("Producto modificado");
         }else{

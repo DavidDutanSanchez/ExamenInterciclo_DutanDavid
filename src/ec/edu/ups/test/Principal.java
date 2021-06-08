@@ -26,8 +26,8 @@ public class Principal {
         
         ControladorDatosCliente controladorDatosCliente= new ControladorDatosCliente(datosCliente);
         ControladorDatosProducto controladorDatosProducto=new ControladorDatosProducto(datosProducto);
-        ControladorFactura controladorFactura=new ControladorFactura();
-        ControladorDetalleFactura controladorDetalleFactura= new ControladorDetalleFactura();
+        ControladorFactura controladorFactura=new ControladorFactura(datosCliente, datosProducto, detalleFactura, factura, controladorDatosCliente);
+        ControladorDetalleFactura controladorDetalleFactura= new ControladorDetalleFactura(detalleFactura, factura);
         
         VistaDatosCliente vistaDatosCliente= new VistaDatosCliente(controladorDatosCliente);
         VistaDatosProducto vistaDatosProducto= new VistaDatosProducto(controladorDatosProducto);
@@ -172,8 +172,7 @@ public class Principal {
                                             System.out.println("Factura Eliminada ");
                                             break;
                                         case 4:
-                                             vistaFactura.listarFacturas();
-                                            System.out.println("Carrito modificado");
+                                            vistaFactura.listarFacturas();
                                             break;
                                         case 5:
                                             salir3 = true;

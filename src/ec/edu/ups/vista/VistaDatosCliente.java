@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorDatosCliente;
+import ec.edu.ups.modelo.DatosCliente;
 import java.util.Scanner;
 
 /**
@@ -22,27 +23,25 @@ public class VistaDatosCliente {
 
     public VistaDatosCliente() {
     }
-    
-    
     public void crearCliente(){
         System.out.println("Ingrese los datos del cliente: ");
         System.out.println(" el Codigo del cliente");
-        int codigo=scanner.nextInt();
+        int id=scanner.nextInt();
         System.out.println("Ingrese el nombre del Cliente: ");
         String nombre=scanner.next();
         System.out.println("Ingrese la cedula del cliente: ");
         String cedula=scanner.next();
         System.out.println("Ingrese la fialidad de pago del Cliente: ");
         String fialidadPago=scanner.next();
-        controladorDatosCliente.crear(codigo, nombre, cedula, fialidadPago);
+        controladorDatosCliente.crear(id, nombre, cedula, fialidadPago);
         System.out.println("-------Usuario Creado------------");
     }
     
     public VistaDatosCliente buscar(){
          System.out.println("Ingrese la ID del cliente a buscar");
-        int codigo=scanner.nextInt();
-        if (controladorDatosCliente.buscar(codigo)!=null){
-           controladorDatosCliente.buscar(codigo).toString();
+        int id=scanner.nextInt();
+        if (controladorDatosCliente.buscar(String.valueOf(id))!=null){
+            System.out.println(controladorDatosCliente.buscar(String.valueOf(id)).toString());
         }else{
             System.out.println("usuario no existe");
         } 
@@ -51,10 +50,13 @@ public class VistaDatosCliente {
     public void modificar(){
         System.out.println("Ingrese el codigo del cliente a Modificar");
         int id=scanner.nextInt();
-        if(controladorDatosCliente.buscar(id)!=null){
-            System.out.println("Ingrese los nuevo datos del cliente");
+        if(controladorDatosCliente.buscar(String.valueOf(id))!=null){
+            System.out.println("----Ingrese los nuevo datos del cliente----");
+            System.out.println("Ingrese el nuevo nombre");
             String nombre=scanner.next();
+            System.out.println("Ingrese la nueva cedula");
             String cedula=scanner.next();
+            System.out.println("Ingrese fialidad de pago");
             String fialidadPago=scanner.next();
             
             controladorDatosCliente.modificar(id, nombre, cedula, fialidadPago);
@@ -66,15 +68,15 @@ public class VistaDatosCliente {
     
     public  void eliminar(){
         System.out.println("Ingrese el codigo del cliente a eliminar:");
-        int codigo=scanner.nextInt();
-        if(controladorDatosCliente.buscar(codigo)!=null){
-            controladorDatosCliente.eliminar(codigo);
-            System.out.println("Cliente eliminado");
-        }else{
-            System.out.println("Usuario no existe");
+        int id=scanner.nextInt();
+       if (controladorDatosCliente.buscar(String.valueOf(id))!=null){
+            controladorDatosCliente.eliminar(id);
+            System.out.println("Producto eliminado con exito");
+        } else {
+            System.out.println("Producto no existente");
         }
-       
-    }
+   }
+    
   public void ListarClientes() {
         controladorDatosCliente.findAll().stream().forEach(object-> System.out.println(object));
     }

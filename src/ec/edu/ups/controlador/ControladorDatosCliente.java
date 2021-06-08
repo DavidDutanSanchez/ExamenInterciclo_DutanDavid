@@ -15,13 +15,13 @@ import java.util.Map;
  */
 public class ControladorDatosCliente {
     private DatosCliente datosCliente;
-    private Map<String, DatosCliente> diccionario;
+     private Map<Integer, DatosCliente> diccionario;
     
    
 
     public ControladorDatosCliente(DatosCliente datosCliente) {
         this.datosCliente = datosCliente;
-        this.diccionario = new HashMap<String,DatosCliente>();
+        this.diccionario = new HashMap<Integer ,DatosCliente>();
     }
 
     public ControladorDatosCliente() {
@@ -31,38 +31,38 @@ public class ControladorDatosCliente {
     
     public void crear(int id, String nombre, String Cedula,String fialidadPago){
         datosCliente= new DatosCliente(id, nombre, Cedula, fialidadPago);
-        diccionario.put(Cedula, datosCliente);
+        diccionario.put(id, datosCliente);
                 
     }
-    public DatosCliente buscar(int id){
+    public DatosCliente buscar(String id){
          if(datosCliente!=null){
             return datosCliente;
         }else{
             System.out.println("El cliente no existe");
+            return null;
         }
-        return null;
     }
     public boolean modificar(int id, String nombre, String Cedula,String fialidadPago){
-        if(buscar(id)!= null){
-            datosCliente=buscar(id);
+        if(datosCliente!= null){
+           // datosCliente=buscar(id);
             datosCliente.setNombre(nombre);
             datosCliente.setCedula(Cedula);
             datosCliente.setFialidadPago(fialidadPago);
-         //datosCliente= new DatosCliente(id, nombre, Cedula, fialidadPago);
-         diccionario.put(Cedula, datosCliente);
+         diccionario.replace(id, datosCliente);
          return true;
         }  else{
             return false;
         }
     }
-    public boolean eliminar(int id){
-        if(buscar(id)!=null){
-        datosCliente=new DatosCliente(id, null, null, null);
+  
+    public boolean eliminar(int id) {
+        if(buscar(String.valueOf(id))!= null){
+        datosCliente = new DatosCliente(id,null,null,null);
         diccionario.remove(id);
         return true;
     }else{
-            return false;
-        }
+    return false;
+}
     }
     public Collection<DatosCliente> findAll() {
         Collection<DatosCliente> datosClientes = diccionario.values();

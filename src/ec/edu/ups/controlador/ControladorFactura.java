@@ -9,6 +9,7 @@ import com.sun.org.apache.bcel.internal.generic.FADD;
 import ec.edu.ups.modelo.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -26,29 +27,29 @@ public class ControladorFactura {
     private Map<Integer, Factura> diccionario;
     private ControladorDatosCliente controladorDatosCliente;
 
-    public ControladorFactura(DatosCliente datosCliente, DatosProducto datosProducto, DetalleFactura detalleFactura, Factura factura, Map<Integer, Factura> diccionario,ControladorDatosCliente controladorDatosCliente) {
+    public ControladorFactura(DatosCliente datosCliente, DatosProducto datosProducto, DetalleFactura detalleFactura, Factura factura,ControladorDatosCliente controladorDatosCliente) {
         this.datosCliente = datosCliente;
         this.datosProducto = datosProducto;
         this.detalleFactura = detalleFactura;
         this.factura = factura;
-        this.diccionario = diccionario;
+        this.diccionario = new HashMap<>();
         this.controladorDatosCliente=controladorDatosCliente;
     }
 
     public ControladorFactura() {
     }
 
-    public boolean create(int numero,Date fecha,double total, int cantidad,int datosClientes ){
-       if(controladorDatosCliente.buscar(cantidad)!=null){
-        factura = new Factura(cantidad, fecha, total, cantidad);
-        Set<DatosCliente> clientes1 = new HashSet<>();
-        for (DatosCliente cliente : clientes1) {
-            factura.agregarDatosCliente(datosCliente);
-            clientes1.add(cliente);
+    public boolean create(int numero,Date fecha,double total, int cantidad,int datosClientes){
+       if(controladorDatosCliente.buscar(String.valueOf(datosClientes))!=null){
+        factura = new Factura(numero, fecha, total, cantidad);
+       // Set<DatosCliente> clientes1 = new HashSet<>();
+        //for (DatosCliente cliente : clientes1) {
+          //  factura.agregarDatosCliente(datosCliente);
+            //clientes1.add(cliente);
             diccionario.put(numero, factura);
             
             return true;
-        }
+       // }
        }
        return false;
     }
@@ -64,7 +65,7 @@ public class ControladorFactura {
     public boolean eliminar(int codigo) {
         if(buscar(codigo)!= null){
         factura = new Factura(codigo, null, 00.0, 0);
-        diccionario.remove(this);
+        diccionario.clear();
         return true;
     }else{
     return false;

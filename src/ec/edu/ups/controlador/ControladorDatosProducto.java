@@ -46,13 +46,13 @@ public class ControladorDatosProducto {
 
     public boolean modificar(int codigo, String descripcion, double precioUnitario, int stock, double iva) {
         if (buscar(codigo) != null) {
-            datosProducto=buscar(codigo);
+           // datosProducto=buscar(codigo);
             datosProducto.setDescripcion(descripcion);
             datosProducto.setPrecioUnitario(precioUnitario);
             datosProducto.setStock(stock);
             datosProducto.setIva(iva);
             //datosProducto = new DatosProducto(codigo, descripcion, precioUnitario, stock, iva);
-            diccionario.put(codigo, datosProducto);
+            diccionario.replace(codigo, datosProducto);
             return true;
         } else {
             return false;
