@@ -10,6 +10,7 @@ package ec.edu.ups.modelo;
  * @author surfa
  */
 public class DatosProducto {
+
     private int codigo;
     private String descripcion;
     private double precioUnitario;
@@ -26,7 +27,6 @@ public class DatosProducto {
 
     public DatosProducto() {
     }
-    
 
     public int getCodigo() {
         return codigo;
@@ -66,31 +66,6 @@ public class DatosProducto {
 
     public void setIva(double iva) {
         this.iva = iva;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + this.codigo;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final DatosProducto other = (DatosProducto) obj;
-        if (this.codigo != other.codigo) {
-            return false;
-        }
-        return true;
     }
 
     @Override

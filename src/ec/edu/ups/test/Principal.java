@@ -17,22 +17,23 @@ import java.util.Scanner;
  * @author surfa
  */
 public class Principal {
-    public static void main (String []args){
-        
-        DatosCliente datosCliente= new DatosCliente();
-        DatosProducto datosProducto= new DatosProducto();
-        DetalleFactura detalleFactura=new DetalleFactura();
-        Factura factura= new Factura();
-        
-        ControladorDatosCliente controladorDatosCliente= new ControladorDatosCliente(datosCliente);
-        ControladorDatosProducto controladorDatosProducto=new ControladorDatosProducto(datosProducto);
-        ControladorFactura controladorFactura=new ControladorFactura(datosCliente, datosProducto, detalleFactura, factura, controladorDatosCliente);
-        ControladorDetalleFactura controladorDetalleFactura= new ControladorDetalleFactura(detalleFactura, factura);
-        
-        VistaDatosCliente vistaDatosCliente= new VistaDatosCliente(controladorDatosCliente);
-        VistaDatosProducto vistaDatosProducto= new VistaDatosProducto(controladorDatosProducto);
-        VistaFactura vistaFactura=new VistaFactura(controladorFactura, controladorDatosProducto, controladorDetalleFactura,controladorDatosCliente);
-        
+
+    public static void main(String[] args) {
+
+        DatosCliente datosCliente = new DatosCliente();
+        DatosProducto datosProducto = new DatosProducto();
+        DetalleFactura detalleFactura = new DetalleFactura();
+        Factura factura = new Factura();
+
+        ControladorDatosCliente controladorDatosCliente = new ControladorDatosCliente(datosCliente);
+        ControladorDatosProducto controladorDatosProducto = new ControladorDatosProducto(datosProducto);
+        ControladorFactura controladorFactura = new ControladorFactura(datosCliente, datosProducto, detalleFactura, factura, controladorDatosCliente);
+        ControladorDetalleFactura controladorDetalleFactura = new ControladorDetalleFactura(detalleFactura, factura);
+
+        VistaDatosCliente vistaDatosCliente = new VistaDatosCliente(controladorDatosCliente);
+        VistaDatosProducto vistaDatosProducto = new VistaDatosProducto(controladorDatosProducto);
+        VistaFactura vistaFactura = new VistaFactura(controladorFactura, controladorDatosProducto, controladorDetalleFactura, controladorDatosCliente);
+
         Scanner input = new Scanner(System.in);
         boolean salir = false;
         boolean salir1 = false;
@@ -53,141 +54,141 @@ public class Principal {
                 switch (opcion) {
 
                     case 1:
-                            while (!salir1) {
-                                System.out.println("QUE DESEEA HACER");
-                                System.out.println("*******************************");
-                                System.out.println(
-                                        " 1.Crear Cliente\n "
-                                        + "2.Buscar Cliente \n "
-                                        + "3.modificar Cliente\n "
-                                        + "4.Eliminar Cliente\n "
-                                        + "5.Listar clientes\n "
-                                        + "6.salir\n " );
-                                      
-                                try {
-                                    System.out.println("Elija una opcion: ");
-                                    opcion1 = input.nextInt();
-                                    switch (opcion1) {
-                                        case 1:
-                                          vistaDatosCliente.crearCliente();
-                                            System.out.println("Cliente creado");
-                                            break;
-                                        case 2:
-                                           vistaDatosCliente.buscar();
-                                            System.out.println("Cliente encontrado");
-                                            break;
-                                        case 3:
-                                            vistaDatosCliente.modificar();
-                                            System.out.println("Cliente modificado");
-                                            break;
-                                        case 4:
-                                            vistaDatosCliente.eliminar();
-                                            System.out.println("Cliente eliminado");
-                                            break;
-                                        case 5:
-                                          vistaDatosCliente.ListarClientes();
-                                            break;
-                                        case 6:
-                                             salir1 = true;
-                                            break;
-                                        default:
-                                            System.out.println("Solo numeros entre el 1 y 6");
-                                    }
-                                } catch (InputMismatchException e) {
-                                    System.out.println("Debes insertar un numero.");
-                                    input.nextInt();
+                        while (!salir1) {
+                            System.out.println("QUE DESEEA HACER");
+                            System.out.println("*******************************");
+                            System.out.println(
+                                    " 1.Crear Cliente\n "
+                                    + "2.Buscar Cliente \n "
+                                    + "3.modificar Cliente\n "
+                                    + "4.Eliminar Cliente\n "
+                                    + "5.Listar clientes\n "
+                                    + "6.salir\n ");
+
+                            try {
+                                System.out.println("Elija una opcion: ");
+                                opcion1 = input.nextInt();
+                                switch (opcion1) {
+                                    case 1:
+                                        vistaDatosCliente.crearCliente();
+                                        System.out.println("Cliente creado");
+                                        break;
+                                    case 2:
+                                        vistaDatosCliente.buscar();
+                                        System.out.println("Cliente encontrado");
+                                        break;
+                                    case 3:
+                                        vistaDatosCliente.modificar();
+                                        System.out.println("Cliente modificado");
+                                        break;
+                                    case 4:
+                                        vistaDatosCliente.eliminar();
+                                        System.out.println("Cliente eliminado");
+                                        break;
+                                    case 5:
+                                        vistaDatosCliente.ListarClientes();
+                                        break;
+                                    case 6:
+                                        salir1 = true;
+                                        break;
+                                    default:
+                                        System.out.println("Solo numeros entre el 1 y 6");
                                 }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Debes insertar un numero.");
+                                input.nextInt();
                             }
+                        }
                         break;
                     case 2:
-                            while (!salir2) {
-                                System.out.println("QUE DESEEA HACER");
-                                System.out.println("*******************************");
-                                System.out.println(
-                                        " 1.Registrar Producto\n "
-                                        + "2.buscar Producto\n "
-                                        + "3.modificar Producto\n "
-                                        + "4.eliminar producto\n "
-                                        + "5.Listar productos\n "
-                                        + "6.salir\n " );
-                                try {
-                                    System.out.println("Elija una opcion");
-                                    opcion1 = input.nextInt();
-                                    switch (opcion1) {
-                                        case 1:
-                                            vistaDatosProducto.crear();
-                                            System.out.println("Producto creado");
-                                            break;
-                                        case 2:
-                                           vistaDatosProducto.buscar();
-                                            System.out.println("Producto encontrado");
-                                            break;
-                                        case 3:
-                                           vistaDatosProducto.modificar();
-                                            System.out.println("Producto modificado");
-                                            break;
-                                        case 4:
-                                            vistaDatosProducto.eliminar();
-                                            System.out.println("Producto eliminado");
-                                            break;
-                                        case 5:
-                                          vistaDatosProducto.listarProductos();
-                                            break;
-                                        case 6:
-                                           salir2 = true;
-                                            break;
-                                        default:
-                                            System.out.println("Solo numeros entre el 1 y 6");
-                                    }
-                                } catch (InputMismatchException e) {
-                                    System.out.println("Debes insertar un numero.");
-                                    input.nextInt();
+                        while (!salir2) {
+                            System.out.println("QUE DESEEA HACER");
+                            System.out.println("*******************************");
+                            System.out.println(
+                                    " 1.Registrar Producto\n "
+                                    + "2.buscar Producto\n "
+                                    + "3.modificar Producto\n "
+                                    + "4.eliminar producto\n "
+                                    + "5.Listar productos\n "
+                                    + "6.salir\n ");
+                            try {
+                                System.out.println("Elija una opcion");
+                                opcion1 = input.nextInt();
+                                switch (opcion1) {
+                                    case 1:
+                                        vistaDatosProducto.crear();
+                                        System.out.println("Producto creado");
+                                        break;
+                                    case 2:
+                                        vistaDatosProducto.buscar();
+                                        System.out.println("Producto encontrado");
+                                        break;
+                                    case 3:
+                                        vistaDatosProducto.modificar();
+                                        System.out.println("Producto modificado");
+                                        break;
+                                    case 4:
+                                        vistaDatosProducto.eliminar();
+                                        System.out.println("Producto eliminado");
+                                        break;
+                                    case 5:
+                                        vistaDatosProducto.listarProductos();
+                                        break;
+                                    case 6:
+                                        salir2 = true;
+                                        break;
+                                    default:
+                                        System.out.println("Solo numeros entre el 1 y 6");
                                 }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Debes insertar un numero.");
+                                input.nextInt();
                             }
+                        }
                         break;
                     case 3:
                         while (!salir3) {
-                                System.out.println("QUE DESEEA HACER");
-                                System.out.println("*******************************");
-                                System.out.println(
-                                        " 1.Registrar Factura\n "
-                                        + "2.buscar Factura \n "
-                                        + "3.eliminar Factura\n "
-                                        + "4.Listar facturas\n "
-                                        + "5.salir\n " );
-                                try {
-                                    System.out.println("Elija una opcion");
-                                    opcion1 = input.nextInt();
-                                    switch (opcion1) {
-                                        case 1:
-                                            vistaFactura.crear();
-                                            break;
+                            System.out.println("QUE DESEEA HACER");
+                            System.out.println("*******************************");
+                            System.out.println(
+                                    " 1.Registrar Factura\n "
+                                    + "2.buscar Factura \n "
+                                    + "3.eliminar Factura\n "
+                                    + "4.Listar facturas\n "
+                                    + "5.salir\n ");
+                            try {
+                                System.out.println("Elija una opcion");
+                                opcion1 = input.nextInt();
+                                switch (opcion1) {
+                                    case 1:
+                                        vistaFactura.crear();
+                                        break;
 
-                                        case 2:
-                                            vistaFactura.buscar();
-                                            System.out.println("Factura encontrada");
-                                            break;
-                                        case 3:
-                                          vistaFactura.eliminar();
-                                            System.out.println("Factura Eliminada ");
-                                            break;
-                                        case 4:
-                                            vistaFactura.listarFacturas();
-                                            break;
-                                        case 5:
-                                            salir3 = true;
-                                            break;
-                                        default:
-                                            System.out.println("Solo numeros entre el 1 y 5");
-                                    }
-                               } catch (InputMismatchException e) {
-                                    System.out.println("Debes insertar un numero.");
-                                    input.nextInt();
+                                    case 2:
+                                        vistaFactura.buscar();
+                                        System.out.println("Factura encontrada");
+                                        break;
+                                    case 3:
+                                        vistaFactura.eliminar();
+                                        System.out.println("Factura Eliminada ");
+                                        break;
+                                    case 4:
+                                        vistaFactura.listarFacturas();
+                                        break;
+                                    case 5:
+                                        salir3 = true;
+                                        break;
+                                    default:
+                                        System.out.println("Solo numeros entre el 1 y 5");
                                 }
-                            }           
+                            } catch (InputMismatchException e) {
+                                System.out.println("Debes insertar un numero.");
+                                input.nextInt();
+                            }
+                        }
                         break;
                     case 4:
-                         salir = true;
+                        salir = true;
                         break;
                     default:
                         System.out.println("Solo numeros entre el 1 y 5");

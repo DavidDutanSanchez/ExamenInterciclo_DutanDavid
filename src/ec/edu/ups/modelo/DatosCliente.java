@@ -27,7 +27,6 @@ public class DatosCliente {
 
     public DatosCliente() {
     }
-    
 
     public int getId() {
         return id;
@@ -61,12 +60,8 @@ public class DatosCliente {
         this.fialidadPago = fialidadPago;
     }
 
-
     @Override
     public String toString() {
         return "DatosCliente{" + "id=" + id + ", nombre=" + nombre + ", cedula=" + cedula + ", fialidadPago=" + fialidadPago + '}';
     }
-    
-    
-
 }

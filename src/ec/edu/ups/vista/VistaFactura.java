@@ -35,10 +35,10 @@ public class VistaFactura {
         this.controladorFactura = controladorFactura;
         this.controladorDatosProducto = controladorDatosProducto;
         this.controladorDetalleFactura = controladorDetalleFactura;
-        this.controladorDatosCliente= controladorDatosCliente;
+        this.controladorDatosCliente = controladorDatosCliente;
         formatoFecha = new SimpleDateFormat("dd/mm/yyyy");
     }
-  
+
     Scanner input = new Scanner(System.in);
     boolean salir = false;
     int opcion4;
@@ -46,7 +46,7 @@ public class VistaFactura {
     public void crear() {
         System.out.println("Ingrese los Datos de la Factura: ");
         System.out.println("Ingrese numero de Factura: ");
-        int numero=input.nextInt();
+        int numero = input.nextInt();
         System.out.println("Fecha (dd/mm/yyyy):");
         String fecha = input.next();
         while (!salir) {
@@ -71,16 +71,16 @@ public class VistaFactura {
                         break;
                     case 2:
                         System.out.println("Dijite el numero del Cliente");
-                        int id=input.nextInt();
-                        if(controladorDatosCliente.buscar(String.valueOf(id))!=null){
-                        controladorFactura.create(numero, Calendar.getInstance().getTime(),subtotal ,0 ,id);
-                        controladorDetalleFactura.aniadirLista(datosProductos);
-                        
-                        }else{
+                        int id = input.nextInt();
+                        if (controladorDatosCliente.buscar(String.valueOf(id)) != null) {
+                            controladorFactura.create(numero, Calendar.getInstance().getTime(), subtotal, 0, id);
+                            controladorDetalleFactura.aniadirLista(datosProductos);
+
+                        } else {
                             System.out.println("Cliente no existe");
                         }
-                        
-                                break;
+
+                        break;
                     case 3:
 
                         salir = true;
@@ -95,23 +95,22 @@ public class VistaFactura {
     }
 
     public void buscar() {
-         System.out.println("Ingrese el numero de Factura a buscar");
-       int codigo=input.nextInt();
-        if (controladorFactura.buscar(codigo)!=null){
+        System.out.println("Ingrese el numero de Factura a buscar");
+        int codigo = input.nextInt();
+        if (controladorFactura.buscar(codigo) != null) {
             System.out.println(controladorDatosProducto.buscar(codigo).toString());
-        }else{
+        } else {
             System.out.println("la factura no existe");
-        } 
+        }
     }
-    
 
     public void eliminar() {
-          System.out.println("Ingrese el numero de factura a eliminar:");
-        int codigo=input.nextInt();
-        if(controladorFactura.buscar(codigo)!=null){
+        System.out.println("Ingrese el numero de factura a eliminar:");
+        int codigo = input.nextInt();
+        if (controladorFactura.buscar(codigo) != null) {
             controladorFactura.eliminar(codigo);
             System.out.println("Factura eliminado");
-        }else{
+        } else {
             System.out.println("factura no existente");
         }
     }
@@ -120,9 +119,5 @@ public class VistaFactura {
         controladorFactura.findAll().stream().forEach(object -> System.out.println(object));
         System.out.println(controladorDetalleFactura.MostrarLista());
     }
-    
-            
-        
-       
-    
+
 }

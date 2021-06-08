@@ -20,6 +20,7 @@ import java.util.Set;
  * @author surfa
  */
 public class ControladorFactura {
+
     private DatosCliente datosCliente;
     private DatosProducto datosProducto;
     private DetalleFactura detalleFactura;
@@ -27,54 +28,54 @@ public class ControladorFactura {
     private Map<Integer, Factura> diccionario;
     private ControladorDatosCliente controladorDatosCliente;
 
-    public ControladorFactura(DatosCliente datosCliente, DatosProducto datosProducto, DetalleFactura detalleFactura, Factura factura,ControladorDatosCliente controladorDatosCliente) {
+    public ControladorFactura(DatosCliente datosCliente, DatosProducto datosProducto, DetalleFactura detalleFactura, Factura factura, ControladorDatosCliente controladorDatosCliente) {
         this.datosCliente = datosCliente;
         this.datosProducto = datosProducto;
         this.detalleFactura = detalleFactura;
         this.factura = factura;
         this.diccionario = new HashMap<>();
-        this.controladorDatosCliente=controladorDatosCliente;
+        this.controladorDatosCliente = controladorDatosCliente;
     }
 
     public ControladorFactura() {
     }
 
-    public boolean create(int numero,Date fecha,double total, int cantidad,int datosClientes){
-       if(controladorDatosCliente.buscar(String.valueOf(datosClientes))!=null){
-        factura = new Factura(numero, fecha, total, cantidad);
-       // Set<DatosCliente> clientes1 = new HashSet<>();
-        //for (DatosCliente cliente : clientes1) {
-          //  factura.agregarDatosCliente(datosCliente);
+    public boolean create(int numero, Date fecha, double total, int cantidad, int datosClientes) {
+        if (controladorDatosCliente.buscar(String.valueOf(datosClientes)) != null) {
+            factura = new Factura(numero, fecha, total, cantidad);
+            // Set<DatosCliente> clientes1 = new HashSet<>();
+            //for (DatosCliente cliente : clientes1) {
+            //  factura.agregarDatosCliente(datosCliente);
             //clientes1.add(cliente);
             diccionario.put(numero, factura);
-            
+
             return true;
-       // }
-       }
-       return false;
+            // }
+        }
+        return false;
     }
-     
-    public Factura buscar(int codigo){
-         if (factura != null) {
+
+    public Factura buscar(int codigo) {
+        if (factura != null) {
             return factura;
         } else {
             System.out.println("la factura no existe");
         }
-       return null;
-        }
-    public boolean eliminar(int codigo) {
-        if(buscar(codigo)!= null){
-        factura = new Factura(codigo, null, 00.0, 0);
-        diccionario.clear();
-        return true;
-    }else{
-    return false;
-}
+        return null;
     }
-     public Collection<Factura> findAll() {
+
+    public boolean eliminar(int codigo) {
+        if (buscar(codigo) != null) {
+            factura = new Factura(codigo, null, 00.0, 0);
+            diccionario.clear();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Collection<Factura> findAll() {
         Collection<Factura> facturas = diccionario.values();
         return facturas;
     }
 }
-
-

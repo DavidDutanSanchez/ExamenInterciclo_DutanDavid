@@ -14,12 +14,13 @@ import java.util.List;
  * @author surfa
  */
 public class Factura {
+
     private int numero;
     private Date fecha;
     private double total;
     private int cantidad;
     private List<DatosCliente> datosClientes;
-    
+
     public Factura(int id, Date fecha, double total, int cantidad) {
         this.numero = id;
         this.fecha = fecha;
@@ -28,10 +29,10 @@ public class Factura {
     }
 
     public Factura() {
-     datosClientes = new ArrayList<>();
-   
+        datosClientes = new ArrayList<>();
+
     }
-    
+
     public int getNumero() {
         return numero;
     }
@@ -63,47 +64,23 @@ public class Factura {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
-   public void agregarDatosCliente(DatosCliente datosCliente) {
+
+    public void agregarDatosCliente(DatosCliente datosCliente) {
         datosClientes.add(datosCliente);
 
     }
- public List<DatosCliente> imprimirDatosClientes() {
+
+    public List<DatosCliente> imprimirDatosClientes() {
         return datosClientes;
- }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + this.numero;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Factura other = (Factura) obj;
-        if (this.numero != other.numero) {
-            return false;
-        }
-        return true;
     }
 
     @Override
     public String toString() {
         return "Factura{" + "numero=" + numero + ", fecha=" + fecha + ", total=" + total + ", cantidad=" + cantidad + '}';
     }
-    
-    public void borrador(){
-        
+
+    public void borrador() {
+
     }
-    
+
 }
